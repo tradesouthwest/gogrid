@@ -415,6 +415,14 @@ function gogrid_theme_excerpt_more( $more ) {
 add_filter( 'excerpt_more', 'gogrid_theme_excerpt_more' ); 
 
 /**
+ * Add theme options file
+ * 
+ * @since 1.0
+ */
+//Register Theme Page assets
+require_once get_template_directory() . '/theme-options.php';
+
+/**
  * gogrid_theme_maybe_banner
  * @uses theme mod 'gogrid_maybe_banner'
  * 
@@ -443,3 +451,4 @@ if (defined('WP_DEBUG') && true === WP_DEBUG) :
     	while ( @ob_end_flush() );
     } );
 endif; 
+?>

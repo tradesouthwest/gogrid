@@ -1,4 +1,82 @@
+<?php
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+/* ------------------------------------------------------------------------ *
+ * Setting Registration for theme Gogrid
+ * ------------------------------------------------------------------------ */
 
+/**
+ * Initializes the theme options page by registering the Sections,
+ * Fields, and Settings.
+ *
+ * This function is registered with the 'admin_init' hook.
+ */
+add_action( 'admin_init', 'gogrid_add_theme_settings' );
+add_action( 'admin_menu', 'gogrid_add_options_page' );
+/**
+ * Add theme menu
+ *
+ * @since 1.0.6
+ * @uses add_theme_page()
+ * $page_title, $menu_title, $capability, $menu_slug, $function
+ */
+
+function gogrid_add_options_page() {
+
+    add_theme_page(
+
+        __( 'Instructions Etc', 'gogrid' ),
+        __( 'Theme Overview', 'gogrid' ),
+        'edit_theme_options',
+        'gogrid_page_elements',
+        'gogrid_display_options_page'
+    );
+}
+
+/**
+ * Add theme settings and section
+ *
+ * @since 1.0.6
+ * @uses add_settings_section()
+ * $id, $title, $callback, $page
+ */
+function gogrid_add_theme_settings() {
+
+        add_settings_section (
+            'gogrid_page_section',
+            __( 'Theme Overview', 'gogrid' ),
+            'gogrid_options_page_callback',
+            'gogrid_page_elements'
+        );
+}
+
+function gogrid_options_page_callback() {
+
+    echo esc_attr( '<h2>' );
+    esc_html_e( 'Gogrid Theme Instructions and General Information', 'gogrid' );
+    echo esc_attr( '</h2>' );
+}
+
+function gogrid_display_options_page(){
+  ?>
+	<div class="wrap">
+    <h1><div id="icon-info" class="dashicons dashicons-welcome-learn-more"></div>
+    <?php esc_html_e( 'gogrid theme page', 'gogrid' ); ?></h1>
+
+        <h3><?php esc_html_e( 'General Overview of Theme Settings', 'gogrid' ); ?></h3>
+
+	</div>
+	<?php
+}
+/**
+ * This function renders the interface elements.
+ *
+ * It accepts an array of arguments and expects the first element in the array to be the description
+ * to be displayed.
+ */
+/*
 .main-content {
 	background: white;
 }
@@ -11,11 +89,11 @@
 	background: #FF7F6688;
 }
 
-.twin {
+.gogridtwin {
 	background: #2185C588;
 }
 
-.twin:last-of-type {
+.gogridtwin:last-of-type {
 	background: #7ECEFD88;
 }
 
@@ -24,3 +102,4 @@
 	background: #3E454C88;
 	color: white;
 }
+*/
