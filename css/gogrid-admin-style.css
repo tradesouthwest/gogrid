@@ -1,0 +1,9 @@
+.widgets-php .widget-liquid-right .widgets-holder-wrap {
+    background: beige;
+}
+/*.widgets-php .widget-liquid-right .widgets-holder-wrap:nth-of-type(1n+4) h2{
+    background: lightblue
+}
+.widgets-php .widget-liquid-right .widgets-holder-wrap:last-of-type h2{
+    background: white
+}*/

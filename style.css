@@ -1,0 +1,397 @@
+/**
+  Theme Name:   GoGrid
+  Description:  GoGrid is a blogging theme made for ClassicPress. Features include fast loading templates. Upload Hero Image. Position for Image. Placement of Call to Action buttons. Choose the font family type. Sets the width of the aricles for pages and posts. Add page background image. Demo at TBD
+  Author:       Larry Judd
+  Author URI:   http://tradesouthwest.com/
+  Theme URI:    https://github.com/tradesouthwest/gogrid
+  Requires PHP: 7.4
+  Requires CP:  1.4
+  Version:      1.0
+  CMS required: wp_body_open WP action or function call not inserted
+  Tags:         two-columns, translation-ready, featured-images, blog, e-commerce, news, custom-menu, custom-background, custom-logo, custom-header
+  License:      GPL 3
+  License URI:  https://www.gnu.org/licenses/quick-guide-gplv3.en.html
+  Text domain:  gogrid
+ */
+/* latin */
+/*--------------------------------------------------------------
+CSS Reset
+--------------------------------------------------------------*/
+html {
+	font-family: sans-serif;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust:     100%;
+
+}
+
+body {
+	margin: 0;
+}
+
+img {
+	display: block;
+	border: 0;
+	width: 100%;
+	height: auto;
+}
+
+
+/*--------------------------------------------------------------
+Accessibility
+--------------------------------------------------------------*/
+/* Text meant only for screen readers */
+.screen-reader-text {
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute !important;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+}
+
+.screen-reader-text:hover,
+.screen-reader-text:active,
+.screen-reader-text:focus {
+	background-color: #f1f1f1;
+	border-radius: 3px;
+	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+	clip: auto !important;
+	color: #21759b;
+	display: block;
+	font-size: 14px;
+	font-weight: bold;
+	height: auto;
+	left: 5px;
+	line-height: normal;
+	padding: 15px 23px 14px;
+	text-decoration: none;
+	top: 5px;
+	width: auto;
+	z-index: 100000; /* Above WP toolbar */
+}
+
+
+/*--------------------------------------------------------------
+Typography
+--------------------------------------------------------------*/
+body,
+button,
+input,
+select,
+textarea {
+	color: #404040;
+	font-family: 'Helvetica', Arial, sans-serif;
+	font-size: 18px;
+	line-height: 1.5;
+}
+
+h1,
+h2,
+h3 {
+	margin: 0;
+	padding: .5em 0;
+}
+
+p {
+	margin: 0;
+	padding: 1em 0;
+}
+/* Avoid text overflows */
+p, h1, h2, h3, h4, h5, h6 {
+	overflow-wrap: break-word;
+	line-height: 1.485;
+}
+img {
+	border-style: none;
+	height: auto;
+	max-width: 100%;
+   /* Adhere to container width. vertical-align: middle; */
+}
+
+/*--------------------------------------------------------------
+General styles
+--------------------------------------------------------------*/
+body{
+	background: #fafdfc
+}
+.site {
+	background: inherit;
+	min-height: 100vh;
+}
+
+.masthead,
+.main-content,
+.sidebar,
+.gogridtwin,
+.footer {
+	padding: 1em 2em;
+}
+
+.main-content {
+	background: inherit;
+}
+.masthead {
+	background: inherit;
+	color: inherit;
+}
+
+.sidebar {
+	background: inherit;
+}
+
+.gogridtwin {
+	background: #ffffff;
+}
+
+.gogridtwin:last-of-type {
+	background: #fafafa;
+}
+
+.colophon {
+	padding: 2em;
+	background: inherit;
+	color: inherit;
+}
+
+.colophon a {
+	text-decoration:none;
+}
+
+.colophon a:hover,
+.colophon a:focus {
+	border-bottom: 1px solid white;
+}
+
+.site-header-menu {
+	background-color: #dedede33;
+	background: linear-gradient(45deg, #f5f5f5 0%, #ffffff 100% );
+}
+.navigation-top {
+
+	margin-right: 50px;
+}
+
+.ltr .navigation-top {
+	margin-left: 50px;
+}
+#menu-toggle details[open] summary ~ * {
+	animation: mtsweep .33s ease-in-out;
+  }
+  @keyframes mtsweep {
+	0%    {opacity: 0; margin-top: -10px}
+	100%  {opacity: 1; margin-top: 0px}
+  }
+#menu-toggle details summary { 
+	cursor: pointer;
+  }
+summary.mobil-only-button {
+	z-index: 2;
+}
+#menu-toggle details summary::marker {
+	display: inline;
+  }
+.navigation-top ul {
+    display: grid;
+	list-style: inside none;
+	z-index: 999;
+	position: relative;
+    left: 50px;
+}
+.ltr .navigation-top ul {
+	left: 0;
+	right: 50px;
+}
+.navigation-top .menu-item-has-children {
+    max-width: 60%;
+}
+.navigation-top .menu-item-has-children ul li {
+	background: none;
+}
+.navigation-top a {
+	padding: 2px 5px;
+	border: thin solid #eee;
+	background: rgba( 255, 255, 255, .76 );
+}
+#menu-toggle details summary > .menu-toggle {
+	font-weight: 900;
+	font-size: 1.55em;
+	color: #050505;
+	text-shadow: 2px 0px 3px gray;
+	letter-spacing: 2px;
+	background: #fff;
+	border: thin solid #eee;
+	padding: 3px 3px 0px 4px;
+	box-shadow: 0 0 1px 1px #ccc;
+	background: #ccca;
+  }
+#menu-toggle span.menu-toggle {
+	display: inline-block;
+	transform: rotate(90deg);
+}
+.social-links-menu {
+	display: flex;
+  justify-content: space-around;
+  flex-wrap: nowrap;
+}
+.site-header-menu .site-title {
+	position: absolute;
+	text-align: center;
+	width: 100%;
+	top: -.15rem;
+}
+
+.site-title:after {
+	content: "";
+	width: 100%;
+	background:#eee;
+	height:1em;
+	clear: both;
+	display:table-cell;
+}
+
+/* ---------------------------------- Featured Image ------- */
+.gogrid-featured {
+	width: auto;
+    height: 300px;
+    margin: 1em auto;
+}
+/* ---------------------------------- V - WP Requires ------- */
+#wp-calendar {
+    table-layout:fixed;
+}
+#wp-calendar td{
+    padding: 3px 4px;
+    border-top: thin solid #ddd;
+    border-right:thin solid #ddd;
+}
+.comment-form label + input,
+.comment-form label + textarea,
+.comment-form label + select {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid #818181;
+}
+.wp-caption {
+    max-width: 100%;
+}
+p img.alignright,
+p img.alignleft,
+p img.alignnone,
+p img.aligncenter{
+	display: flex;
+    max-width: calc(100% - 20vw)
+}
+.wp-caption.alignnone,
+.wp-caption.alignleft,
+.wp-caption.alignright,
+.wp-caption.aligncenter {
+  max-width: calc(100% - 20vw)
+}
+/* =Gallery
+-------------------------------------------------------------- */
+.gallery {
+	margin: 10px -10px;
+}
+.gallery > p {
+margin: 0;
+height: 0;
+}
+
+.gallery-item {
+margin: 0 0 10px;
+float: left;
+padding: 0 10px;
+}
+.gallery-item .gallery-icon img {
+width: 100%;
+}
+.gallery-item .gallery-caption {
+padding: 10px 0;
+margin: 0;
+color: #444;
+clear: both;
+font-size: 12px;
+text-align: center;
+}
+.gallery-columns-1 .gallery-item {
+width: 100%;
+}
+.gallery-columns-2 .gallery-item {
+width: 50%;
+}
+.gallery-columns-3 .gallery-item {
+width: 33.33%;
+}
+.gallery-columns-4 .gallery-item {
+width: 25%;
+}
+.gallery-columns-5 .gallery-item {
+width: 20%;
+}
+.gallery-columns-6 .gallery-item {
+width: 16.66%;
+}
+.gallery-columns-7 .gallery-item {
+width: 14.28%;
+}
+.gallery-columns-8 .gallery-item {
+width: 12.5%;
+}
+.gallery-columns-9 .gallery-item {
+width: 11.11%;
+}
+@media (max-width: 480px) {
+.gallery .gallery-item {
+	width: 100%;
+	margin-bottom: 20px;
+}
+}
+/*--------------------------------------------------------------
+If no grid support, limit width to 50em and center align
+--------------------------------------------------------------*/
+@supports not (display: grid) {
+	.site {
+		max-width: 50em;
+		margin: 0 auto;
+	}
+}
+
+/*--------------------------------------------------------------
+CSS Grid layout for wider screens, when browser supports grid:
+--------------------------------------------------------------*/
+
+@media screen and (min-width: 600px) {
+	@supports (display: grid) {
+
+		.site {
+			display: grid;
+			grid-template-columns: 1fr repeat(6, minmax(auto, 10em)) 1fr;
+			grid-template-rows: minmax(1em, auto) 1fr auto minmax(1em, auto);
+		}
+
+		.masthead,
+		.colophon {
+			grid-column: span 8;
+		}
+		.navigation-top .menu-item-has-children {
+			max-width: fit-content;
+		}
+		.main-content {
+			grid-column: 2/6;
+		}
+
+		.sidebar {
+			grid-column: 6/8;
+		}
+
+		.gogridtwin {
+			grid-column: 2/5;
+			grid-row: 3/4;
+		}
+
+		.gogridtwin:last-of-type {
+			grid-column: 5/8;
+		}
+
+	}
+}
+
