@@ -215,9 +215,9 @@ function gogrid_theme_widgets_init() {
 	
 	register_sidebar(
 		array(
-			'name'          => __( '[1]Side', 'gogrid' ),
+			'name'          => __( 'Primary Side', 'gogrid' ),
 			'id'            => 'sidebar',
-			'description'   => __( 'Appears on the side of all content', 'gogrid' ),
+			'description'   => __( 'Appears on the side of all content with default template. (sidebar)', 'gogrid' ),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',
@@ -227,9 +227,9 @@ function gogrid_theme_widgets_init() {
 	
 	register_sidebar(
 		array(
-			'name'          => __( '[1]Left Sidebar Below', 'gogrid' ),
+			'name'          => __( 'Primary Left Content', 'gogrid' ),
 			'id'            => 'sidebar-2',
-			'description'   => __( 'Add widgets here to appear in your sidebar.', 'gogrid' ),
+			'description'   => __( 'Add widgets here to appear in this spot. (sidebar-2)', 'gogrid' ),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',
@@ -239,9 +239,9 @@ function gogrid_theme_widgets_init() {
 	
 	register_sidebar(
 		array(
-			'name'          => __( '[1]Right Sidebar Below', 'gogrid' ),
+			'name'          => __( 'Primary Right Content', 'gogrid' ),
 			'id'            => 'sidebar-3',
-			'description'   => __( 'Appears at the bottom of the content on posts and pages.', 'gogrid' ),
+			'description'   => __( 'Appears at the bottom of the content on posts and pages. (sidebar-3)', 'gogrid' ),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',
@@ -251,9 +251,9 @@ function gogrid_theme_widgets_init() {
 
 	register_sidebar(
 		array(
-			'name'          => __( '[2]Side Alternative', 'gogrid' ),
+			'name'          => __( 'Secondary Alternative Sidebar', 'gogrid' ),
 			'id'            => 'sidebar-secondary',
-			'description'   => __( 'Appears on the side of all Secondary content.', 'gogrid' ),
+			'description'   => __( 'Appears on the side of all Secondary content. (sidebar-secondary)', 'gogrid' ),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',
@@ -263,9 +263,9 @@ function gogrid_theme_widgets_init() {
 	
 	register_sidebar(
 		array(
-			'name'          => __( '[2]Left content alt.', 'gogrid' ),
+			'name'          => __( 'Secondary Left Content', 'gogrid' ),
 			'id'            => 'sidebar-4',
-			'description'   => __( 'Apperears for Secondary Template, lower left.', 'gogrid' ),
+			'description'   => __( 'Apperears for Secondary Template, lower left. (sidebar-4)', 'gogrid' ),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',
@@ -275,9 +275,9 @@ function gogrid_theme_widgets_init() {
 	
 	register_sidebar(
 		array(
-			'name'          => __( '[2]Right content alt.', 'gogrid' ),
+			'name'          => __( 'Secondary Right Content', 'gogrid' ),
 			'id'            => 'sidebar-5',
-			'description'   => __( 'Appears for Secondary Template, lower right.', 'gogrid' ),
+			'description'   => __( 'Appears for Secondary Template, lower right. (sidebar-5)', 'gogrid' ),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',
@@ -286,9 +286,9 @@ function gogrid_theme_widgets_init() {
 	);
 	register_sidebar(
 		array(
-			'name'          => __( '[3]Side Sidebar Third', 'gogrid' ),
+			'name'          => __( 'Third Main Sidebar', 'gogrid' ),
 			'id'            => 'sidebar-third',
-			'description'   => __( 'Appears on the side of all Third content.', 'gogrid' ),
+			'description'   => __( 'Appears on the side of all Third content. (sidebar-third)', 'gogrid' ),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',
@@ -298,9 +298,9 @@ function gogrid_theme_widgets_init() {
 	
 	register_sidebar(
 		array(
-			'name'          => __( '[3]Left Lower Third', 'gogrid' ),
+			'name'          => __( 'Third Lower Left', 'gogrid' ),
 			'id'            => 'sidebar-7',
-			'description'   => __( 'Apperears for Third Template, lower left.', 'gogrid' ),
+			'description'   => __( 'Apperears for Third Template, lower left. (sidebar-7)', 'gogrid' ),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',
@@ -310,20 +310,57 @@ function gogrid_theme_widgets_init() {
 	
 	register_sidebar(
 		array(
-			'name'          => __( '[3]Right Lower Third', 'gogrid' ),
+			'name'          => __( 'Third Lower Right', 'gogrid' ),
 			'id'            => 'sidebar-8',
-			'description'   => __( 'Appears for Third Template, lower right.', 'gogrid' ),
+			'description'   => __( 'Appears for Third Template, lower right. (sidebar-8)', 'gogrid' ),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',
 			'after_title'   => '</h2>',
 		)
 	);
+
+	register_sidebar(
+		array(
+			'name'          => __( 'Fourth Main Sidebar', 'gogrid' ),
+			'id'            => 'sidebar-fourth',
+			'description'   => __( 'Appears on the side of all Fourth content. (sidebar-fourth)', 'gogrid' ),
+			'before_widget' => '<section id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</section>',
+			'before_title'  => '<h2 class="widget-title">',
+			'after_title'   => '</h2>',
+		)
+	);
+	
+	register_sidebar(
+		array(
+			'name'          => __( 'Fourth Lower Left', 'gogrid' ),
+			'id'            => 'sidebar-10',
+			'description'   => __( 'Apperears for Fourth Template. (sidebar-10)', 'gogrid' ),
+			'before_widget' => '<section id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</section>',
+			'before_title'  => '<h2 class="widget-title">',
+			'after_title'   => '</h2>',
+		)
+	);
+	
+	register_sidebar(
+		array(
+			'name'          => __( 'Fourth Lower Right', 'gogrid' ),
+			'id'            => 'sidebar-11',
+			'description'   => __( 'Appears for Fourth Template, lower right. (sidebar-11)', 'gogrid' ),
+			'before_widget' => '<section id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</section>',
+			'before_title'  => '<h2 class="widget-title">',
+			'after_title'   => '</h2>',
+		)
+	);
+
 	register_sidebar(
 		array(
 			'name'          => __( 'Footer', 'gogrid' ),
 			'id'            => 'sidebar-footer',
-			'description'   => __( 'Appears in the theme footer', 'gogrid' ),
+			'description'   => __( 'Appears in the theme footer. (sidebar-footer)', 'gogrid' ),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',
