@@ -156,7 +156,7 @@ function gogrid_theme_enqueue_styles() {
 	);
     
 	wp_enqueue_script( 'gogrid-theme-script', 
-		get_template_directory_uri() . '/rels/gogrid-theme.js', 
+		get_template_directory_uri() . '/js/gogrid-theme.js', 
 		array( 'jquery' ), 
 		'1.0.3', 
 		true 

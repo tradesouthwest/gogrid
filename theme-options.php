@@ -63,10 +63,17 @@ function gogrid_display_options_page(){
   ?>
 	<div class="wrap">
     <h1><div id="icon-info" class="dashicons dashicons-welcome-learn-more"></div>
-    <?php esc_html_e( 'gogrid theme page', 'gogrid' ); ?></h1>
+    <?php esc_html_e( 'Gogrid theme page', 'gogrid' ); ?></h1>
 
         <h3><?php esc_html_e( 'General Overview of Theme Settings', 'gogrid' ); ?></h3>
-
+        <figure>
+<img src="<?php echo esc_url( get_template_directory_uri() . '/css/instruct.png' ); ?>" height="600" width="auto" alt="boxes"/>
+</figure>
+<ul><li><?php esc_html_e( 'The areas for widgets all have alternative fallbacks that are created so there should be content in every widget box.', 'gogrid' ); ?></li>
+<li><?php esc_html_e( 'If a widget does not exists (you have not added any widgets yet) then you will see a message telling you what box is empty.', 'gogrid' ); ?></li>
+<li><?php esc_html_e( 'All templates will follow the previous template\'s default. If Secondary Template has no widgets then it will use the widgets from the Primary Template.', 'gogrid' ); ?></li>
+<li><?php esc_html_e( 'As follows, the Quad Template will use the widgets from the Secondary but display secondary widgets AFTER Quad Widgets, if installed.', 'gogrid' ); ?></li>
+</ul>
 	</div>
 	<?php
 }

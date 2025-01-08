@@ -20,12 +20,12 @@ get_header(); ?>
 <div class="site">
     <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
 
-    <header class="masthead">
+    <div class="masthead">
     
 				<p class="site-description"><?php echo esc_html( get_bloginfo( 'description', 'display' ) ); ?></p>
 
 		
-    </header><!-- .masthead -->
+</div><!-- .masthead -->
 
 
         <main id="content" class="main-content">
