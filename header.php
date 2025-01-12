@@ -78,7 +78,6 @@
 
 	<div class="site-logo-container">
 
-            
             <p class="site-description">	<?php echo esc_html( get_bloginfo( 'description', 'display' ) ); ?></p>
 			<div class="gogrid-logo-container site-logo">
                 <a href="<?php 
