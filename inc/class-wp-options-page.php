@@ -551,8 +551,9 @@ class WP_Options_Page {
 			if ( ! $field['__is_input'] ) continue;
 
 			$name = $field['name'];
-			$value = $this->apply_filters( 'posted_value', \esc_attr( wp_unslash( $_POST[ $name ] ) ) // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotValidated
-													?? '', \esc_attr( $name ), $this );
+			$value = $this->apply_filters( 'posted_value', 
+						\sanitize_text_field( wp_unslash( $_POST[ $name ] ) ) // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotValidated
+						?? '', \esc_attr( $name ), $this );
 			$field['value'] = $value;
 			$field['error'] = null;
 
