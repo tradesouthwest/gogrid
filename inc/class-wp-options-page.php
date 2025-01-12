@@ -534,9 +534,9 @@ class WP_Options_Page {
 	public function handle_options () {
 		if ( 'POST' !== $_SERVER['REQUEST_METHOD'] ) return;  // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotValidated
 		if ( ! \is_admin() ) return;
-		if ( $this->id !== ( sanitize_key( wp_unslash( $_REQUEST['page'] ) ) ?? '' ) ) return;
+		if ( $this->id !== ( sanitize_key( wp_unslash( $_REQUEST['page'] ) ) ?? '' ) ) return; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotValidated
 
-		$nonce = \esc_attr( wp_unslash( $_POST[ $this->get_nonce_name() ] ) ) ?? '';
+		$nonce = sanitize_key( wp_unslash( $_POST[ $this->get_nonce_name() ] ) ) ?? ''; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotValidated
 		$action = $this->get_nonce_action();
 		$invalid_nonce = ! \wp_verify_nonce( $nonce, $action );
 		$invalid_user = ! \current_user_can( $this->capability );
@@ -551,7 +551,8 @@ class WP_Options_Page {
 			if ( ! $field['__is_input'] ) continue;
 
 			$name = $field['name'];
-			$value = $this->apply_filters( 'posted_value', \esc_attr( wp_unslash( $_POST[ $name ] ) ) ?? '', $name, $this );
+			$value = $this->apply_filters( 'posted_value', \esc_attr( wp_unslash( $_POST[ $name ] ) ) // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotValidated
+													?? '', \esc_attr( $name ), $this );
 			$field['value'] = $value;
 			$field['error'] = null;
 
@@ -1073,7 +1074,7 @@ class WP_Options_Page {
 				$option_id = \esc_attr( $id . '_' . $opt_value );
 				$checked = \in_array( $opt_value, $value ) ? 'checked' : '' ?>
 				<label for="<?php echo \esc_attr( $option_id ) ?>">
-					<input <?php echo \esc_attr( self::parse_tag_atts( $atts ) ); ?> id="<?php echo \esc_attr( $option_id ) ?>" value="<?php echo \esc_attr( $opt_value ) ?>" <?php echo $checked ?>>
+					<input <?php echo \esc_attr( self::parse_tag_atts( $atts ) ); ?> id="<?php echo \esc_attr( $option_id ) ?>" value="<?php echo \esc_attr( $opt_value ) ?>" <?php echo \esc_attr( $checked ) ?>>
 					<span class="option-label"><?php echo \esc_html( $opt_label ); ?></span>
 				</label>
 				<br>
