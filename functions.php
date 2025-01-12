@@ -458,7 +458,7 @@ function gogrid_sanitize_text( $input ) {
 /**
  * Customizer additions.
  */
-require get_template_directory() . '/inc/class-wp-options-page.php';
+//require get_template_directory() . '/inc/class-wp-options-page.php';
 
 /**
  * Filter the "read more" excerpt string link to the post.
