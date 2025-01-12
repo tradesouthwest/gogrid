@@ -248,8 +248,8 @@ class WP_Options_Page {
 		$default_strings = [
 			'template_notice_error' => '<strong>Error</strong>: %s',
 			'checkbox_enable' => 'Enable',
-			'options_updated' => '<strong>' . \esc_html__( 'Settings saved.' ) . '</strong>',
-			'submit_button_label' => \esc_html__( 'Save Changes' ),
+			'options_updated' => '<strong>' . \esc_html__( 'Settings saved.', 'gogrid' ) . '</strong>',
+			'submit_button_label' => \esc_html__( 'Save Changes', 'gogrid' ),
 		];
 		$this->strings = \array_replace( $default_strings, (array) $this->strings);
 
@@ -532,16 +532,16 @@ class WP_Options_Page {
 	 * @return void
 	 */
 	public function handle_options () {
-		if ( 'POST' !== $_SERVER['REQUEST_METHOD'] ) return;
+		if ( 'POST' !== $_SERVER['REQUEST_METHOD'] ) return;  // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotValidated
 		if ( ! \is_admin() ) return;
-		if ( $this->id !== ( $_REQUEST['page'] ?? '' ) ) return;
+		if ( $this->id !== ( sanitize_key( wp_unslash( $_REQUEST['page'] ) ) ?? '' ) ) return;
 
-		$nonce = $_POST[ $this->get_nonce_name() ] ?? '';
+		$nonce = \esc_attr( wp_unslash( $_POST[ $this->get_nonce_name() ] ) ) ?? '';
 		$action = $this->get_nonce_action();
 		$invalid_nonce = ! \wp_verify_nonce( $nonce, $action );
 		$invalid_user = ! \current_user_can( $this->capability );
 		if ( $invalid_nonce || $invalid_user ) {
-			\wp_die( \esc_html__( 'Sorry, you are not allowed to access this page.' ), 403 );
+			\wp_die( \esc_html__( 'Sorry, you are not allowed to access this page.', 'gogrid' ), 403 );
 		}
 		$options = [];
 		$has_errors = false;
@@ -551,7 +551,7 @@ class WP_Options_Page {
 			if ( ! $field['__is_input'] ) continue;
 
 			$name = $field['name'];
-			$value = $this->apply_filters( 'posted_value', $_POST[ $name ] ?? '', $name, $this );
+			$value = $this->apply_filters( 'posted_value', \esc_attr( wp_unslash( $_POST[ $name ] ) ) ?? '', $name, $this );
 			$field['value'] = $value;
 			$field['error'] = null;
 
@@ -581,7 +581,7 @@ class WP_Options_Page {
 				if ( \is_scalar( $value ) ) {
 					$value = $sanitize( $value );
 				} else {
-					$value = \maybe_unserialize( $sanitize( \serialize( $value ) ) );
+					$value = \maybe_unserialize( $sanitize( \serialize( $value ) ) ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.serialize_serialize
 				}
 				$field['value'] = $value;
 			}
@@ -664,7 +664,7 @@ class WP_Options_Page {
 			<div class="options-page-wrap" style="width:40%">
 				<?php $this->do_action( 'before_render_form', $this ); ?>
 
-				<form <?php echo self::parse_tag_atts( $this->form_attributes ); ?>>
+				<form <?php echo \esc_attr( self::parse_tag_atts( $this->form_attributes ) ); ?>>
 					<?php $this->render_notices() ?>
 					<?php $this->render_nonce() ?>
 					<?php $this->render_all_fields() ?>
@@ -674,7 +674,7 @@ class WP_Options_Page {
 				<?php $this->render_credits() ?>
 				</div>
 			  <div class="preview-frame-exprmntl" style="width=60%">
-				<iframe src="https://sunlandcomputers.com/reader-theme/" height="980" width="680"></iframe>
+				<!--<iframe src="https://sunlandcomputers.com/reader-theme/" height="980" width="680"></iframe>-->
 	          </div>
 		  </div>
 		</div>
@@ -696,7 +696,7 @@ class WP_Options_Page {
 				\esc_attr( $page_class ),
 				\esc_attr( $type ),
 				\esc_attr( $class ),
-				$message
+				\wp_kses_post( $message )
 			);
 		}
 	}
@@ -821,7 +821,7 @@ class WP_Options_Page {
 				/** @var string */
 				$output = trim( \ob_get_clean() );
 				if ( '' !== $output ) {
-					echo $output;
+					echo \wp_kses_post( $output );
 				} else {
 					throw new \Exception( "Invalid field type \"{$field['type']}\"" );
 				}
@@ -887,12 +887,12 @@ class WP_Options_Page {
 		$atts['aria-describedby'] = $desc ? \esc_attr( $name ) . '-description' : false;
 		?>
 
-		<input <?php echo self::parse_tag_atts( $atts ); ?>>
+		<input <?php echo \esc_attr( self::parse_tag_atts( $atts ) ); ?>>
 
 		<?php $this->do_action( 'after_field_input', $field, $this ); ?>
 
 		<?php if ( $desc ) : ?>
-		<p class="description" id="<?php echo \esc_attr( $name ); ?>-description"><?php echo $desc ?></p>
+		<p class="description" id="<?php echo \esc_attr( $name ); ?>-description"><?php echo \esc_html( $desc ) ?></p>
 		<?php endif;
 	}
 
@@ -915,12 +915,12 @@ class WP_Options_Page {
 		$atts['aria-describedby'] = $desc ? \esc_attr( $name ) . '-description' : false;
 		?>
 
-		<textarea <?php echo self::parse_tag_atts( $atts ); ?>><?php echo \esc_html( $value ); ?></textarea>
+		<textarea <?php echo \esc_attr( self::parse_tag_atts( $atts ) ); ?>><?php echo \esc_html( $value ); ?></textarea>
 
 		<?php $this->do_action( 'after_field_input', $field, $this ); ?>
 
 		<?php if ( $desc ) : ?>
-		<p class="description" id="<?php echo \esc_attr( $name ); ?>-description"><?php echo $desc ?></p>
+		<p class="description" id="<?php echo \esc_attr( $name ); ?>-description"><?php echo \esc_html( $desc ); ?></p>
 		<?php endif;
 	}
 
@@ -942,7 +942,7 @@ class WP_Options_Page {
 		$atts['aria-describedby'] = $desc ? \esc_attr( $name ) . '-description' : false;
 		?>
 
-		<select <?php echo self::parse_tag_atts( $atts ); ?>>
+		<select <?php echo \esc_attr( self::parse_tag_atts( $atts ) ); ?>>
 			<?php foreach ( $options as $opt_value => $opt_label ) : ?>
 				<option value="<?php echo \esc_attr( $opt_value ); ?>" <?php \selected( $opt_value, $value ) ?>><?php echo \esc_html( $opt_label ) ?></option>
 			<?php endforeach; ?>
@@ -951,7 +951,7 @@ class WP_Options_Page {
 		<?php $this->do_action( 'after_field_input', $field, $this ); ?>
 
 		<?php if ( $desc ) : ?>
-		<p class="description" id="<?php echo \esc_attr( $name ); ?>-description"><?php echo $desc ?></p>
+		<p class="description" id="<?php echo \esc_attr( $name ); ?>-description"><?php echo \esc_html( $desc ); ?></p>
 		<?php endif;
 	}
 
@@ -979,13 +979,13 @@ class WP_Options_Page {
 		?>
 
 		<fieldset>
-			<legend class="screen-reader-text"><span><?php echo \esc_html( \strip_tags( $title ) ); ?></span></legend>
+			<legend class="screen-reader-text"><span><?php echo \esc_html( \wp_strip_all_tags( $title ) ); ?></span></legend>
 
 			<?php foreach ( $options as $opt_value => $opt_label ) :
 				$option_id = \esc_attr( $id . '_' . $opt_value ); ?>
 				<label for="<?php echo \esc_attr( $option_id ) ?>">
-					<input <?php echo self::parse_tag_atts( $atts ); ?> id="<?php echo \esc_attr( $option_id ) ?>" value="<?php echo \esc_attr( $opt_value ) ?>" <?php \checked( $opt_value, $value ); ?>>
-					<span class="option-label"><?php echo $opt_label ?></span>
+					<input <?php echo \esc_attr( self::parse_tag_atts( $atts ) ); ?> id="<?php echo \esc_attr( $option_id ) ?>" value="<?php echo \esc_attr( $opt_value ) ?>" <?php \checked( $opt_value, $value ); ?>>
+					<span class="option-label"><?php echo \esc_html( $opt_label ); ?></span>
 				</label>
 				<br>
 			<?php endforeach ?>
@@ -993,7 +993,7 @@ class WP_Options_Page {
 			<?php $this->do_action( 'after_field_input', $field, $this ); ?>
 
 			<?php if ( $desc ) : ?>
-			<p class="description"><?php echo $desc ?></p>
+			<p class="description"><?php echo \esc_html( $desc ); ?></p>
 			<?php endif ?>
 		</fieldset>
 
@@ -1026,17 +1026,17 @@ class WP_Options_Page {
 
 		<fieldset>
 			<legend class="screen-reader-text">
-				<span><?php echo \esc_html( strip_tags( $title ) ); ?></span>
+				<span><?php echo \esc_html( wp_strip_all_tags( $title ) ); ?></span>
 			</legend>
 			<label for="<?php echo \esc_attr( $name ); ?>">
-				<input <?php echo self::parse_tag_atts( $atts ); ?> <?php \checked( $value ); ?>>
-				<span class="option-label"><?php echo $label ?></span>
+				<input <?php echo \esc_attr( self::parse_tag_atts( $atts ) ); ?> <?php \checked( $value ); ?>>
+				<span class="option-label"><?php echo \esc_html( $label ); ?></span>
 			</label>
 
 			<?php $this->do_action( 'after_field_input', $field, $this ); ?>
 
 			<?php if ( $desc ) : ?>
-			<p class="description"><?php echo $desc ?></p>
+			<p class="description"><?php echo \esc_html( $desc ); ?></p>
 			<?php endif ?>
 		</fieldset>
 
@@ -1067,14 +1067,14 @@ class WP_Options_Page {
 		?>
 
 		<fieldset>
-			<legend class="screen-reader-text"><span><?php echo \esc_html( strip_tags( $title ) ); ?></span></legend>
+			<legend class="screen-reader-text"><span><?php echo \esc_html( wp_strip_all_tags( $title ) ); ?></span></legend>
 
 			<?php foreach ( $options as $opt_value => $opt_label ) :
 				$option_id = \esc_attr( $id . '_' . $opt_value );
 				$checked = \in_array( $opt_value, $value ) ? 'checked' : '' ?>
 				<label for="<?php echo \esc_attr( $option_id ) ?>">
-					<input <?php echo self::parse_tag_atts( $atts ); ?> id="<?php echo \esc_attr( $option_id ) ?>" value="<?php echo \esc_attr( $opt_value ) ?>" <?php echo $checked ?>>
-					<span class="option-label"><?php echo $opt_label ?></span>
+					<input <?php echo \esc_attr( self::parse_tag_atts( $atts ) ); ?> id="<?php echo \esc_attr( $option_id ) ?>" value="<?php echo \esc_attr( $opt_value ) ?>" <?php echo $checked ?>>
+					<span class="option-label"><?php echo \esc_html( $opt_label ); ?></span>
 				</label>
 				<br>
 			<?php endforeach ?>
@@ -1082,7 +1082,7 @@ class WP_Options_Page {
 			<?php $this->do_action( 'after_field_input', $field, $this ); ?>
 
 			<?php if ( $desc ) : ?>
-			<p class="description"><?php echo $desc ?></p>
+			<p class="description"><?php echo \esc_html( $desc ); ?></p>
 			<?php endif ?>
 		</fieldset>
 
@@ -1103,9 +1103,9 @@ class WP_Options_Page {
 		$title_html .= $field['title'] ?? '';
 		$title_html .= "</{$tag}>";
 		?>
-		<?php echo $title_html; ?>
+		<?php echo \esc_html( $title_html ); ?>
 		<?php if ( $desc ) : ?>
-		<p><?php echo $desc ?></p>
+		<p><?php echo \esc_html( $desc ); ?></p>
 		<?php endif ?>
 		<?php
 	}
@@ -1129,7 +1129,7 @@ class WP_Options_Page {
 		<p class="submit">
 			<?php $this->do_action( 'before_submit_button', $this ) ?>
 
-			<button <?php echo self::parse_tag_atts( $atts );  ?>>
+			<button <?php echo \esc_attr( self::parse_tag_atts( $atts ) );  ?>>
 				<?php echo \esc_html( $title ); ?>
 			</button>
 

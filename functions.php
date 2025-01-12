@@ -485,14 +485,14 @@ add_filter( 'excerpt_more', 'gogrid_theme_excerpt_more' );
  */
 //Register Theme Page assets
 require_once get_template_directory() . '/theme-options.php';
-function yourprefix_create_settings_page () {
+function gogrid_theme_create_settings_page () {
 	$page = new WP_Options_Page();
 
 	// give your page a ID
-	$page->id = 'my_settings_page';
+	$page->id = 'gogrid_theme_settings_page';
 
 	// set the menu name
-	$page->menu_title = 'My Settings';
+	$page->menu_title = 'gogrid_theme Settings';
 
 	// register your options fields
 	$page->fields = [
@@ -524,17 +524,17 @@ function yourprefix_create_settings_page () {
 	// So you can easily your instance class later
 	// example: My_Plugin->settings = $page;
 }
-add_action( 'init', 'yourprefix_create_settings_page' );
+add_action( 'init', 'gogrid_theme_create_settings_page' );
 /**
  * Proper ob_end_flush() for all levels
  *
  * This replaces the WordPress `wp_ob_end_flush_all()` function
  * with a replacement that doesn't cause PHP notices.
- */
+ *//*
 if (defined('WP_DEBUG') && true === WP_DEBUG) :
     remove_action( 'shutdown', 'wp_ob_end_flush_all', 1 );
     add_action( 'shutdown', function() {
     	while ( @ob_end_flush() );
     } );
-endif; 
+endif; */ 
 ?>
