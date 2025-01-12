@@ -25,14 +25,28 @@
 <?php wp_body_open(); ?>
 <a class="skip-link screen-reader-text" href="#main">
     <?php esc_attr_e( 'Skip to content', 'gogrid' ); ?></a>
+<div class="site">
 
-	<div class="header">
-		
+    <div class="masthead">
+
+	<header class="header">
+			<?php $header_image = get_header_image();
+			            if ( ! empty( $header_image ) ) : ?>
+
+	<figure class="header-banner">
+
+                        <a href="<?php echo esc_url( home_url() ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" 
+                        rel="home"><img id="header-img" src="<?php header_image(); ?>" width="<?php echo esc_attr( get_custom_header()->width ); ?>" 
+                        height="<?php echo esc_attr( get_custom_header()->height ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" /></a>
+                        </figure>
+                        		            	<?php 
+                        endif; ?>
+
 		<div id="header-menu" class="site-header-menu">
-		<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+		
 		
 			<nav id="nav" class="navbar navigation-top" aria-label="<?php esc_attr_e( 'Primary Menu', 'gogrid' ); ?>">
-			
+			<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 			<?php 
 			if ( has_nav_menu( 'primary' ) ) : ?>
 			<div id="menu-toggle">
@@ -55,17 +69,31 @@
 			endif; ?>
 		
 			</nav><!-- .main-navigation -->
-			<?php 
+			
+
+		</div>
+		
+		<?php 
             if( has_custom_logo() ) : ?>
 
-            <div class="gogrid-logo-container site-logo">
+	<div class="site-logo-container">
+
+            
+            <p class="site-description">	<?php echo esc_html( get_bloginfo( 'description', 'display' ) ); ?></p>
+			<div class="gogrid-logo-container site-logo">
                 <a href="<?php 
 				echo esc_url( home_url( '/' ) ); ?>" 
                    rel="bookmark"><?php 
 				echo wp_kses_post( force_balance_tags( gogrid_theme_custom_logo() ) ); ?></a>
             </div>
+	</div>
             <?php 
-            endif; ?>
+            else:
+            ?>
+		<p class="site-description">	<?php echo esc_html( get_bloginfo( 'description', 'display' ) ); ?></p>
+<?php
+		endif; ?>
+	</header><!-- .site-header -->
 
-		</div>
-	</div><!-- .site-header -->
+	
+    </div><!-- .masthead -->

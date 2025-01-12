@@ -21,9 +21,9 @@
 		href ="<?php echo esc_url( get_attachment_link( get_post_thumbnail_id() ) ); ?>" 
 		title="<?php the_title_attribute( 'before=Permalink to: &after=' ); ?>">
 		<?php 
-		the_post_thumbnail( 'thumbnail', array( 
+		the_post_thumbnail( 'post-thumbnail', array( 
 				'itemprop' => 'image', 
-				'class'  => 'gogrid-featured',
+				'class'  => 'aligncenter',
 				'alt'  => get_attachment_link( get_post_thumbnail_id() )
 			) 
 		); ?></a> 
@@ -31,9 +31,9 @@
 			<?php
 			} else { ?>
 			<?php 
-			the_post_thumbnail( 'thumbnail', array( 
+			the_post_thumbnail( 'attachment-full', array( 
 					'itemprop' => 'image', 
-					'class'  => 'gogrid-featured',
+					'class'  => 'aligncenter',
 					'alt'  => get_attachment_link( get_post_thumbnail_id() )
 				) 
 			);

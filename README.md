@@ -18,9 +18,6 @@ Theme Options Include:
     - Choose between two templates to have different sidebars.
     - Minimal files to make page load times blazing fast.
       Grid layout with ample content width and custom sections for sidebar data.
-    - 
-    - Font for Content
-      Choose the font family type.
 
 Theme built with CSS3 grid templating specifications for full mobile and small device support.
 

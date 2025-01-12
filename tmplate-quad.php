@@ -16,18 +16,6 @@
 
 get_header(); ?>
 
-<body>
-<div class="site">
-    <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
-
-    <div class="masthead">
-    
-				<p class="site-description"><?php echo esc_html( get_bloginfo( 'description', 'display' ) ); ?></p>
-
-		
-</div><!-- .masthead -->
-
-
         <main id="content" class="main-content">
         <?php if ( have_posts() ) : ?>
 

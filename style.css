@@ -35,7 +35,6 @@ img {
 	height: auto;
 }
 
-
 /*--------------------------------------------------------------
 Accessibility
 --------------------------------------------------------------*/
@@ -84,19 +83,17 @@ textarea {
 	line-height: 1.5;
 }
 
-h1,
-h2,
-h3 {
-	margin: 0;
-	padding: .5em 0;
+h1, h2, h3 {
+	margin: 1.22rem 0 0;
+	padding: 0;
 }
 
 p {
 	margin: 0;
-	padding: 1em 0;
+	padding: .5em 0;
 }
 /* Avoid text overflows */
-p, h1, h2, h3, h4, h5, h6 {
+p, h4, h5, h6 {
 	overflow-wrap: break-word;
 	line-height: 1.485;
 }
@@ -105,6 +102,15 @@ img {
 	height: auto;
 	max-width: 100%;
    /* Adhere to container width. vertical-align: middle; */
+}
+
+a {
+	text-decoration: none;
+}
+
+article a:not(h2 a)
+article a:not(figure) {
+	border-bottom: thin dashed currentColor;
 }
 
 /*--------------------------------------------------------------
@@ -122,6 +128,7 @@ body{
 .main-content,
 .sidebar,
 .gogridtwin,
+.gogridquad,
 .footer {
 	padding: 1em 2em;
 }
@@ -132,6 +139,7 @@ body{
 .masthead {
 	background: inherit;
 	color: inherit;
+	margin-top: 1em;
 }
 
 .sidebar {
@@ -152,24 +160,47 @@ body{
 	color: inherit;
 }
 
-.colophon a {
-	text-decoration:none;
-}
-
 .colophon a:hover,
 .colophon a:focus {
-	border-bottom: 1px solid white;
+	border-bottom: 1px solid currentColor;
 }
-
+.navigation-top {
+	min-height: 4em;
+    margin: 0;
+    display: inherit;
+    width: 100%;
+    position: fixed;
+    top: 1em;
+}
 .site-header-menu {
 	background-color: #dedede33;
 	background: linear-gradient(45deg, #f5f5f5 0%, #ffffff 100% );
+}	
+
+.site-title {
+	position: absolute;
+	width: 100%;
+	top: -.63em;
+	left: calc(20vw + 10px);
+    
+}
+.site-title a {
+    color: #3d3d3d;
+}
+
+.primary-menu {
+	background: linear-gradient(45deg, rgba( 30,30,28, .9 ) 0%, rgba( 251,253,254, .3 ) 50% );
+	padding: .938em;
+	border-width: 8px;
+	border-left: 8px solid #a753;
 }
 .navigation-top {
 
 	margin-right: 50px;
 }
-
+.admin-bar .navigation-top {
+    margin-top: 2em;
+}
 .ltr .navigation-top {
 	margin-left: 50px;
 }
@@ -194,12 +225,19 @@ summary.mobil-only-button {
 	list-style: inside none;
 	z-index: 999;
 	position: relative;
-    left: 50px;
+    left: 1px;
+	
 }
 .ltr .navigation-top ul {
 	left: 0;
-	right: 50px;
+	right: 1px;
 }
+.navigation-top li {
+	margin-bottom: 2.5px;
+}
+.navigation-top li:last-child {
+	margin-bottom: 0;
+} 
 .navigation-top .menu-item-has-children {
     max-width: 60%;
 }
@@ -207,54 +245,145 @@ summary.mobil-only-button {
 	background: none;
 }
 .navigation-top a {
-	padding: 2px 5px;
-	border: thin solid #eee;
-	background: rgba( 255, 255, 255, .76 );
+	padding: 5px 10px 2px 10px;
+  border: thin solid rgba(192,232,242,.32);
+  background: rgba( 25, 25, 25, .84 );
+  text-decoration: none;
+  color: lightcyan;
+  letter-spacing: 2px;
+}
+
+.navigation-top a:hover{
+	opacity: .82;
+  color: black;
+  background: beige;
 }
 #menu-toggle details summary > .menu-toggle {
 	font-weight: 900;
-	font-size: 1.55em;
+	font-size: 1.4em;
 	color: #050505;
 	text-shadow: 2px 0px 3px gray;
 	letter-spacing: 2px;
 	background: #fff;
 	border: thin solid #eee;
 	padding: 3px 3px 0px 4px;
-	box-shadow: 0 0 1px 1px #ccc;
-	background: #ccca;
-  }
+	box-shadow: 0 0 1px 1px #aaa;
+	background: #cccc;
+}
+
 #menu-toggle span.menu-toggle {
 	display: inline-block;
 	transform: rotate(90deg);
 }
+
 .social-links-menu {
 	display: flex;
   justify-content: space-around;
   flex-wrap: nowrap;
 }
-.site-header-menu .site-title {
-	position: absolute;
-	text-align: center;
-	width: 100%;
-	top: -.15rem;
-}
 
+/*
 .site-title:after {
-	content: "";
+	content: " ";
 	width: 100%;
-	background:#eee;
-	height:1em;
+	background: transparent;
+	height:1px;
 	clear: both;
-	display:table-cell;
+	display: block;
+}
+*/
+.header-logo {
+position: relative;  
+
+    display: flex;
+z-index: 1;
 }
 
-/* ---------------------------------- Featured Image ------- */
-.gogrid-featured {
-	width: auto;
-    height: 300px;
-    margin: 1em auto;
+.site-logo-container {
+	display: flex;
+	justify-content: center;
+	margin-top:1.5em;
 }
+.gogrid-logo-container{
+    display: flex;
+    width: 100%;
+    justify-content: end;
+}
+.header-logo img{
+	box-shadow: 1px 1px 5px 5px #eee;
+	position: relative;
+  	
+}
+.has-banner .site-logo-container {
+    margin-top: 0;
+}
+.header-banner {
+	margin: 0 auto;
+	z-index: 2;
+}
+.site-description {
+	min-width: fit-content;
+    padding: 15px 15px 5px 18px;
+	margin: 0;
+    display: flex;
+    justify-content: flex-start;
+    background:#eee7;
+    border-bottom: thin solid antiquewhite;
+	background: linear-gradient( 45deg, rgba( 240,250,240, .9 ) 0%, rgba( 245,235,220, .3 ) 100% );
+    text-shadow: 0px 2px 3px #daa;
+}
+/* ---------------------------------- Featured Image ########------- */
+.size-auto, 
+.size-full,
+.size-large,
+.size-medium,
+.size-thumbnail {
+	max-width: 100%;
+	height: auto;
+}
+
+.gogrid-featured {
+	margin: 5px;
+    padding: 10px;
+    border: solid gray 1px;
+}
+
+.linked-attachment-container {
+	width: auto;
+    max-width: 100%;
+    max-height: 380px; 
+	display: initial;
+	padding: 0;
+	margin: .128em 0 .75em 0;
+	background: #eee;
+} 
+
+
+
 /* ---------------------------------- V - WP Requires ------- */
+
+
+.alignnone {
+margin: 5px 20px 20px 0;
+display: block;
+}
+.aligncenter, div.aligncenter {
+display:block;
+margin: 5px auto 5px auto;
+}
+.alignright {
+float:right;
+margin: 5px 0 20px 20px;
+}
+.alignleft {
+float:left;
+margin: 5px 20px 20px 0;
+}
+.aligncenter {
+display: block;
+margin: 5px auto 5px auto;
+}
+
 #wp-calendar {
     table-layout:fixed;
 }
@@ -340,11 +469,190 @@ width: 12.5%;
 width: 11.11%;
 }
 @media (max-width: 480px) {
-.gallery .gallery-item {
-	width: 100%;
-	margin-bottom: 20px;
+	.gallery .gallery-item {
+		width: 100%;
+		margin-bottom: 20px;
+	}
 }
+/* =Comments
+-------------------------------------------------------------- */
+#comments,
+#respond,
+.commentlist,
+.commentlist ul.children,
+.commentlist li.comment,
+.commentlist li.pingback,
+.commentlist .comment-body {
+  width: 100%;
+  clear: both;
+  float: left;
 }
+#comments-title,
+#reply-title {
+  font-size: 1.5em;
+  margin-bottom: 0;
+}
+.comment-content p {
+  padding: 1px 3px;
+  line-height: 1.2;
+}
+.logged-in-as {
+  margin-top: 0;
+  font-size: 14px;
+}
+.logged-in-as a {
+  text-decoration: none;
+  border-bottom: 1px dotted;
+}
+.commentlist li.comment,
+.commentlist li.pingback {
+  padding-bottom: 1px;
+}
+.commentlist,
+.commentlist ul.children {
+  list-style: none;
+  padding: 0;
+}
+.commentlist ol li {
+color:inherit;
+}
+.commentlist ul.children,
+.commentlist ol.children {
+  margin: 10px 0 0;
+  padding-left: 10px;
+}
+.commentlist .children .comment {
+  border-left: 1px solid #e6e6e6;
+  position: relative;
+}
+.commentlist .children .comment:before {
+  width: 12px;
+  height: 12px;
+  display: block;
+  background: #fff;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  -ms-border-radius: 12px;
+  -o-border-radius: 12px;
+  border-radius: 12px;
+  border: 1px solid #e6e6e6;
+  position: absolute;
+  top: 30px;
+  left: -7px;
+  content: "";
+  z-index: 60;
+}
+.commentlist .children .comment:after {
+  width: 100px;
+  height: 1px;
+  border-top: 1px solid #e6e6e6;
+  display: block;
+  position: absolute;
+  top: 36px;
+  left: -5px;
+  content: "";
+  z-index: 50;
+}
+.commentlist .comment-body {
+  padding: 8px 12px;
+  background: #fff;
+  display: block;
+  border: 1px solid #bbb;
+  position: relative;
+  z-index: 100;
+}
+.commentlist .children > li.comment {
+  padding-left: 23px !important;
+}
+.comment-notes {
+  line-height: 1.2em;
+  clear: both;
+}
+.commentlist li.comment .avatar {
+  float: left;
+  padding: 0;
+  border-color: #CCC;
+}
+.commentlist li.comment .comment-author {
+  width: 100%;
+  color: #222;
+  text-decoration: none;
+}
+.commentlist li.comment .comment-author {
+  font-size: 130%;
+  padding-left: 75px;
+  line-height: 1;
+}
+.commentlist li.comment .comment-meta {
+  padding-left: 75px;
+  font-size: 80%;
+  color: #888;
+  font-style: italic;
+}
+.commentlist li.comment .comment-text {
+  padding: 0 0 0 75px;
+}
+#cancel-comment-reply-link {
+  font-size: 1em;
+  float: right;
+}
+.comment-reply-link {
+  float: right;
+  margin: 0;
+}
+.commentlist pre {
+  background: #eee;
+  border-color: #e2e2e2;
+}
+.pingback a,
+.comment a {
+  text-decoration: none;
+  border-bottom: 1px dotted;
+}
+.comment .url {
+  font-style: italic;
+}
+.bypostauthor > .comment-body {
+  border: 10px solid #888;
+}
+#respond > * {
+  font-size: 90%
+}
+h3#reply-title {
+  text-align: center;
+}
+#comment {
+  height: 100px;
+}
+#commentform {
+  width: 78%;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  padding: .852em;
+}
+#commentform input {
+  float: right;
+  border-radius: 3px;
+  width: 82%;
+  padding: 5px;
+  color: #000;
+  font-size: 1.126em;
+}
+#commentform textarea {
+  color: #000;
+  font-size: 1.126em;
+  border-radius: 3px;
+}
+#commentform #submit {
+  width: auto;
+  text-align: center;
+  float: none;
+  position: relative;
+  left: 39.5%;
+} 
+form#commentform {
+display: none; }
+
 /*--------------------------------------------------------------
 If no grid support, limit width to 50em and center align
 --------------------------------------------------------------*/
@@ -367,29 +675,44 @@ CSS Grid layout for wider screens, when browser supports grid:
 			grid-template-columns: 1fr repeat(6, minmax(auto, 10em)) 1fr;
 			grid-template-rows: minmax(1em, auto) 1fr auto minmax(1em, auto);
 		}
-
+		.site-title {
+			left: calc(28vw + 2em );
+		}
+		/* Position and size elements within the grid container defined.  */
 		.masthead,
 		.colophon {
 			grid-column: span 8;
+		}
+		.navigation-top {
+			top: .2em;
 		}
 		.navigation-top .menu-item-has-children {
 			max-width: fit-content;
 		}
 		.main-content {
-			grid-column: 2/6;
+			grid-column: 2/6; /* start at the second column and end at the sixth  */
 		}
 
 		.sidebar {
-			grid-column: 6/8;
+			grid-column: 6/8; /* start at the sixth column and end at the eighth */
 		}
 
 		.gogridtwin {
-			grid-column: 2/5;
-			grid-row: 3/4;
+			grid-column: 2/5; /* start at the second column and end at the fifth column. */
+			grid-row: 3/4;    /* start at the third row and end at the fourth row. */
 		}
 
 		.gogridtwin:last-of-type {
-			grid-column: 5/8;
+			grid-column: 5/8;   /* start at the fifth column and end at the eighth column */
+		}
+
+		.gogridquad {
+			display: flex;
+			flex-direction: row;
+		}
+
+		.gogridquad:last-of-type {
+			flex-basis: auto;
 		}
 
 	}

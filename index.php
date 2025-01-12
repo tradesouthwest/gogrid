@@ -16,18 +16,6 @@
 
 get_header(); ?>
 
-<body>
-<div class="site">
-    <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
-
-    <header class="masthead">
-    
-				<p class="site-description"><?php echo esc_html( get_bloginfo( 'description', 'display' ) ); ?></p>
-
-		
-    </header><!-- .masthead -->
-
-
         <main id="content" class="main-content">
         <?php if ( have_posts() ) : ?>
 
@@ -40,6 +28,7 @@ get_header(); ?>
                     get_template_part( 'excerpt' );
                 } else {
                     get_template_part( 'content' );
+                    //comment_form( $args, $post );
                 }
 
             // End the loop.

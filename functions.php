@@ -86,7 +86,15 @@ function gogrid_theme_setup() {
 		 * provide it for us.
 		 */
 		add_theme_support( 'title-tag' );
+
+		/*
+		 * Enable support for Post Thumbnails on posts and pages.
+		 *
+		 * @link https://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
+		 */
 		add_theme_support( 'post-thumbnails' );
+		//add_image_size( 'gogrid-featured', 9999, 320 ); 
+		//set_post_thumbnail_size( 9999, 320 );
 
 		/*
 		 * Enable support for custom logo.
@@ -101,14 +109,15 @@ function gogrid_theme_setup() {
 				'flex-height' => true,
 			)
 		);
+		// Add a filter to jacqui_header_image_width _height to change the width and height of your custom header.
+    $custom_header_support = array(
+        'flex-height' => true,
+        'flex-width'  => true,
+        'width'  => apply_filters( 'gogrid_header_image_width', 9999 ),
+        'height' => apply_filters( 'gogrid_header_image_height', 740 ),
+    );
+    add_theme_support( 'custom-header', $custom_header_support );
 
-		/*
-		 * Enable support for Post Thumbnails on posts and pages.
-		 *
-		 * @link https://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
-		 */
-		//add_theme_support( 'post-thumbnails' );
-		//set_post_thumbnail_size( 1200, 9999 );
 
 		// This theme uses wp_nav_menu() in two locations.
 		register_nav_menus(
@@ -130,19 +139,18 @@ endif;
  * @since gogrid 1.0
  */
 function gogrid_theme_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 
-		'gogrid_theme_content_width', 840 );
+	if ( ! function_exists( 'wp_body_open' ) ) {
+    
+		function wp_body_open() {
+			do_action( 'wp_body_open' );
+		}
+	}
+	if ( ! isset( $content_width ) ) {
+		$content_width = 740;
+	}
 }
 
-/**
- * Add backwards compatibility support for wp_body_open function.
- */
-if ( ! function_exists( 'wp_body_open' ) ) {
-    
-    function wp_body_open() {
-        do_action( 'wp_body_open' );
-    }
-}
+
 
 /** #A3
  * Enqueues scripts and styles.
@@ -423,6 +431,25 @@ function gogrid_sanitize_text( $input ) {
     return wp_kses_post( force_balance_tags( $input ) );
 }
 
+
+/**
+ * gogrid_theme_maybe_banner
+ * @uses theme mod 'gogrid_maybe_banner'
+ * 
+ * @return Boolean
+ */
+
+ function gogrid_theme_maybe_banner(){
+	if ( !get_theme_mods() ) { 
+		$rtn = true;
+	} else {
+    	$rtn = ''; 
+		$rtn = get_theme_mod( 'gogrid_maybe_banner' );
+	}
+
+		return $rtn;
+} 
+
 /**
  * Custom template tags for this theme.
  */
@@ -431,7 +458,7 @@ function gogrid_sanitize_text( $input ) {
 /**
  * Customizer additions.
  */
-//require get_template_directory() . '/inc/customizer.php';
+require get_template_directory() . '/inc/class-wp-options-page.php';
 
 /**
  * Filter the "read more" excerpt string link to the post.
@@ -458,24 +485,46 @@ add_filter( 'excerpt_more', 'gogrid_theme_excerpt_more' );
  */
 //Register Theme Page assets
 require_once get_template_directory() . '/theme-options.php';
+function yourprefix_create_settings_page () {
+	$page = new WP_Options_Page();
 
-/**
- * gogrid_theme_maybe_banner
- * @uses theme mod 'gogrid_maybe_banner'
- * 
- * @return Boolean
- */
+	// give your page a ID
+	$page->id = 'my_settings_page';
 
-function gogrid_theme_maybe_banner(){
-	if ( !get_theme_mods() ) { 
-		$rtn = true;
-	} else {
-    	$rtn = ''; 
-		$rtn = get_theme_mod( 'gogrid_maybe_banner' );
-	}
+	// set the menu name
+	$page->menu_title = 'My Settings';
 
-		return $rtn;
-} 
+	// register your options fields
+	$page->fields = [
+		// a simple text input field
+		[
+			'id' => 'api_key',
+			'title' => 'API Key',
+			'type' => 'text',
+		],
+		[
+			'id' => 'page_layout',
+			'title' => 'Page Layout',
+			'type' => 'select',
+			'options' => [
+		'layone' => 'One Right',
+		'laytwo' => 'One Left',
+		'laythree' => 'Two Sidebars'
+			],
+		]
+	];
+
+	// register the page
+	$page->init();
+
+	// access the stored options
+	$api_key = $page->get_option( 'api_key' );
+
+	// store this page in a global object or variable
+	// So you can easily your instance class later
+	// example: My_Plugin->settings = $page;
+}
+add_action( 'init', 'yourprefix_create_settings_page' );
 /**
  * Proper ob_end_flush() for all levels
  *

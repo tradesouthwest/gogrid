@@ -8,7 +8,8 @@
  * @subpackage GoGrid
  * @since      GoGrid 1.0.0
  */
-?>    <footer class="colophon grid">
+?>    
+<footer class="colophon grid">
 
 	<div class="footer">
 
@@ -37,15 +38,14 @@
 				<?php
 				if ( function_exists( 'the_privacy_policy_link' ) ) {
 					the_privacy_policy_link( '', '<span role="separator" aria-hidden="true"></span>' );
-				}
-				?>
-				<!--<p><a class="classicpress-credit" href="<?php echo esc_url( __( 'https://www.classicpress.net/', 'gogrid' ) ); ?>" class="imprint">
+				} ?></p>
 				<?php
-				printf( esc_attr__( 'Proudly powered by %s', 'gogrid' ), 'ClassicPress' );
-				?></a></p>-->
-				<div class="upto">
-    				<a class="back_to_top" title="<?php esc_attr_e('Top of page link', 'gogrid'); ?>"><sup>^</sup></a>
-				</div>
+				if ( is_active_sidebar( 'sidebar-footer' ) ) { ?>
+					<?php 
+					dynamic_sidebar( 'sidebar-footer' ); ?>
+				<?php 
+				} ?>
+				
 			</div><!-- .site-info -->
 
 <?php wp_footer(); ?>
