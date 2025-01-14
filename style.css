@@ -52,6 +52,43 @@ img {
     height: auto;
 }
 
+svg:not(:root) {
+    overflow: hidden;
+}
+
+figure {
+    margin: 1em 40px;
+}
+
+hr {
+    height: 0;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+pre {
+    overflow: auto;
+}
+
+code,
+kbd,
+pre,
+samp {
+    font-family: monospace, monospace;
+    font-size: 1em;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+    margin: 0;
+    font: inherit;
+    color: inherit;
+}
+
 /*--------------------------------------------------------------
 Accessibility
 --------------------------------------------------------------*/
@@ -97,7 +134,7 @@ select,
 textarea {
     color: #404040;
     font-family: 'Helvetica', Arial, sans-serif;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1.5;
 }
 
@@ -141,7 +178,7 @@ article a:not(h2 a) article a:not(figure) {
 General styles
 --------------------------------------------------------------*/
 body {
-    background: #fafdfc
+    background: #fafdfc;
 }
 
 .site {
@@ -386,6 +423,101 @@ summary.mobil-only-button {
     border-bottom: thin solid antiquewhite;
     background: linear-gradient(45deg, rgba(240, 250, 240, .9) 0%, rgba(245, 235, 220, .3) 100%);
     text-shadow: 0px 2px 3px #daa;
+}
+
+.article-info:after,
+.article-info:before {
+	content: "";
+	display: block;
+	clear:both;
+	width: 100%;
+	background: #eee;
+	height: 1px;
+}
+
+.post-nav-links span {
+	letter-spacing: .45rem;
+	font-weight: bold;
+}
+
+abbr[title],
+abbr[data-original-title] {
+    cursor: help;
+    border-bottom: 1px dotted #777;
+}
+
+blockquote {
+    padding: 10px 20px;
+    margin: 0 0 20px;
+    font-size: 17.5px;
+    border-left: 5px solid #eee;
+}
+
+blockquote p:last-child,
+blockquote ul:last-child,
+blockquote ol:last-child {
+    margin-bottom: 0;
+}
+
+address {
+    margin-bottom: 20px;
+    font-style: normal;
+    line-height: 1.42857143;
+}
+
+code,
+xmp,
+pre,
+samp {
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+code {
+    padding: 2px 4px;
+    font-size: 90%;
+    color: #c7254e;
+    background-color: #f9f2f4;
+    border-radius: 4px;
+}
+
+pre {
+    display: block;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    font-size: 13px;
+    line-height: 1.42857143;
+    color: #333;
+    word-break: break-all;
+    word-wrap: break-word;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+pre code {
+    padding: 0;
+    font-size: inherit;
+    color: inherit;
+    white-space: pre-wrap;
+    background-color: transparent;
+    border-radius: 0;
+}
+
+.pre-scrollable {
+    max-height: 340px;
+    overflow-y: scroll;
+}
+
+.ltr .search-submit {
+	top: -50%;
+	left: 0;
+}
+
+.search-submit {
+	display: flex;
+    position: relative;
+    justify-content: flex-end;
+    margin: -1.825em auto auto 72%;
 }
 
 /*--------------------------------------------------------------

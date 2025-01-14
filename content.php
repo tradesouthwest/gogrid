@@ -44,15 +44,14 @@
 	<div class="entry-content">
 		
 		<?php the_content(); ?>
-		
-		<div class="link-pages">
-			<?php wp_link_pages(); ?>
-		</div>
 
 	</div><!-- .entry-content -->
-
+	
 	<div class="article-info">
-
+		
+	    <div class="link-pages">
+			<?php wp_link_pages(); ?>
+		</div>
 		<div class="post-footer">
 			<p><i class="ic-calendar-day"></i><span class="post_footer-date">
 			<?php printf( esc_attr( get_the_date() ) ); ?></span>
