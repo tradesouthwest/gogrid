@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Secondary Sidebars
+ * Template Name: Secondary Sidebars | Sidebar #2
  * The alternate template file.
  *
  * This is the theme file that you may choose to use from within the editor 
