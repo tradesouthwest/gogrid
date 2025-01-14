@@ -389,7 +389,7 @@ function gogrid_theme_after_entry_render(){
 		<small><?php esc_html_e('By: ', 'gogrid'); ?> <em><?php the_author(); ?></em>
 		| <?php esc_html_e('Categorized as: ', 'gogrid'); ?> <em><?php the_category( ' &bull; ' ); ?></em>
 		| <?php esc_html_e('Keys: ', 'gogrid'); ?><em> <?php the_tags( ' ' ); ?></em>
-		| <?php esc_html_e('Added on: ', 'gogrid'); ?> <em><?php echo esc_html( get_the_date() ); ?></em>
+		<!-- <?php esc_html_e('Added on: ', 'gogrid'); ?> <em><?php echo esc_html( get_the_date() ); ?></em> -->
 		</small>
 	</div>
 	<?php 

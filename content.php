@@ -63,3 +63,13 @@
 	</div>
 
 </article><!-- #post-## -->
+<?php 
+/**
+ * Add comment template if is singular
+ */
+if ( is_single() ) : ?>
+    <?php if ( comments_open() || get_comments_number() ) :
+	comments_template();
+endif; ?>
+<?php 
+endif; ?>

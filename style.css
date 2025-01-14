@@ -416,6 +416,9 @@ Featured Image
     background: #eee;
 }
 
+.gogrid-heading-meta small {
+	font-size: 82.5%;
+}
 /*--------------------------------------------------------------
 WP Requires
 --------------------------------------------------------------*/
@@ -480,6 +483,11 @@ p img.aligncenter {
 .wp-caption.alignright,
 .wp-caption.aligncenter {
     max-width: calc(100% - 20vw)
+}
+
+a > .post-publish-date em{
+	color: gray;
+	font-size: x-small;
 }
 
 /*--------------------------------------------------------------
@@ -721,7 +729,7 @@ Comments
 }
 
 .bypostauthor>.comment-body {
-    border: 10px solid #888;
+    border: 1px dashed #888;
 }
 
 #respond>* {
