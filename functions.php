@@ -450,5 +450,9 @@ function gogrid_theme_excerpt_more( $more ) {
 
 	return $more;
 }
-
+/**
+ * Customizer additions.
+ * @since 1.0.2
+ */
+require get_template_directory() . '/inc/gogrid-customizer.php';
 ?>

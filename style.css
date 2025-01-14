@@ -1,7 +1,7 @@
 /**
   Theme Name:   GoGrid
   Description:  GoGrid is a blogging theme made for ClassicPress. Features include fast loading templates. Upload Hero Image. Position for Image. Placement of Call to Action buttons. Choose the font family type. Sets the width of the articles for pages and posts. Add page background image. Demo at https://gogrid.tswdev.com/
-  Author:       Larry Judd
+  Author:       Larry@tradesouthwest
   Author URI:   http://tradesouthwest.com/
   Theme URI:    https://github.com/tradesouthwest/gogrid
   Requires PHP: 7.4
@@ -123,7 +123,6 @@ Accessibility
     /* Above WP toolbar */
 }
 
-
 /*--------------------------------------------------------------
 Typography
 --------------------------------------------------------------*/
@@ -244,10 +243,10 @@ body {
 
 .site-title {
     position: absolute;
-    width: 100%;
+    width: fit-content;
     top: -.63em;
     left: calc(20vw + 10px);
-
+	font-size: 75%;
 }
 
 .site-title a {
@@ -935,6 +934,7 @@ CSS Grid layout for wider screens, when browser supports grid:
 
         .site-title {
             left: calc(28vw + 2em);
+			font-size: 1.58em;
         }
 
         /* Position and size elements within the grid container defined.  */
@@ -983,4 +983,10 @@ CSS Grid layout for wider screens, when browser supports grid:
         }
 
     }
+} 
+@media screen and (max-width: 789px) {
+	.admin-bar .navigation-top,
+	.navigation-top {
+		margin-top: 3em;
+	}
 } 
