@@ -77,36 +77,3 @@ function gogrid_display_options_page(){
 	</div>
 	<?php
 }
-/**
- * This function renders the interface elements.
- *
- * It accepts an array of arguments and expects the first element in the array to be the description
- * to be displayed.
- */
-/*
-.main-content {
-	background: white;
-}
-.masthead {
-	background: #2185C588;
-	color: white;
-}
-
-.sidebar {
-	background: #FF7F6688;
-}
-
-.gogridtwin {
-	background: #2185C588;
-}
-
-.gogridtwin:last-of-type {
-	background: #7ECEFD88;
-}
-
-.colophon {
-	padding: 2em;
-	background: #3E454C88;
-	color: white;
-}
-*/

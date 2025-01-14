@@ -24,7 +24,7 @@
  *
  * @package    ClassicPress
  * @subpackage GoGrid
- * @since      GoGrid 1.0
+ * @since      GoGrid 1.0.2
  */
 
 /**
@@ -52,6 +52,8 @@ add_action( 'gogrid_theme_after_entry', 'gogrid_theme_after_entry_render' );
 // ------------------------- Filters -----------------------------
 // F1 
 add_filter( 'body_class',            'gogrid_theme_body_classes' );
+// F2
+add_filter( 'excerpt_more', 'gogrid_theme_excerpt_more' );
 
 /** #A1
  * Sets up theme defaults and registers support for various WordPress features.
@@ -432,35 +434,7 @@ function gogrid_sanitize_text( $input ) {
 }
 
 
-/**
- * gogrid_theme_maybe_banner
- * @uses theme mod 'gogrid_maybe_banner'
- * 
- * @return Boolean
- */
-
- function gogrid_theme_maybe_banner(){
-	if ( !get_theme_mods() ) { 
-		$rtn = true;
-	} else {
-    	$rtn = ''; 
-		$rtn = get_theme_mod( 'gogrid_maybe_banner' );
-	}
-
-		return $rtn;
-} 
-
-/**
- * Custom template tags for this theme.
- */
-
-//require get_template_directory() . '/inc/theme-admin-menu.php';
-/**
- * Customizer additions.
- */
-//require get_template_directory() . '/inc/class-wp-options-page.php';
-
-/**
+/** F2
  * Filter the "read more" excerpt string link to the post.
  *
  * @param string $more "Read more" excerpt string.
@@ -476,65 +450,5 @@ function gogrid_theme_excerpt_more( $more ) {
 
 	return $more;
 }
-add_filter( 'excerpt_more', 'gogrid_theme_excerpt_more' ); 
 
-/**
- * Add theme options file
- * 
- * @since 1.0
- */
-//Register Theme Page assets
-require_once get_template_directory() . '/theme-options.php';
-function gogrid_theme_create_settings_page () {
-	$page = new WP_Options_Page();
-
-	// give your page a ID
-	$page->id = 'gogrid_theme_settings_page';
-
-	// set the menu name
-	$page->menu_title = 'gogrid_theme Settings';
-
-	// register your options fields
-	$page->fields = [
-		// a simple text input field
-		[
-			'id' => 'api_key',
-			'title' => 'API Key',
-			'type' => 'text',
-		],
-		[
-			'id' => 'page_layout',
-			'title' => 'Page Layout',
-			'type' => 'select',
-			'options' => [
-		'layone' => 'One Right',
-		'laytwo' => 'One Left',
-		'laythree' => 'Two Sidebars'
-			],
-		]
-	];
-
-	// register the page
-	$page->init();
-
-	// access the stored options
-	$api_key = $page->get_option( 'api_key' );
-
-	// store this page in a global object or variable
-	// So you can easily your instance class later
-	// example: My_Plugin->settings = $page;
-}
-add_action( 'init', 'gogrid_theme_create_settings_page' );
-/**
- * Proper ob_end_flush() for all levels
- *
- * This replaces the WordPress `wp_ob_end_flush_all()` function
- * with a replacement that doesn't cause PHP notices.
- *//*
-if (defined('WP_DEBUG') && true === WP_DEBUG) :
-    remove_action( 'shutdown', 'wp_ob_end_flush_all', 1 );
-    add_action( 'shutdown', function() {
-    	while ( @ob_end_flush() );
-    } );
-endif; */ 
 ?>

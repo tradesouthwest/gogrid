@@ -6,7 +6,7 @@
  *
  * @package    ClassicPress
  * @subpackage GoGrid
- * @since      GoGrid 1.0.0
+ * @since      GoGrid 1.0.2 
  */
 
 ?><!DOCTYPE html>

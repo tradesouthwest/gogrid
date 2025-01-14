@@ -5,8 +5,8 @@
   Author URI:   http://tradesouthwest.com/
   Theme URI:    https://github.com/tradesouthwest/gogrid
   Requires PHP: 7.4
-  Requires CP:  1.4
-  Version:      1.0
+  Requires CP:  2.0
+  Version:      1.0.2
   CMS required: wp_body_open WP action or function call not inserted
   Tags:         two-columns, translation-ready, featured-images, blog, e-commerce, news, custom-menu, custom-background, custom-logo, custom-header
   License:      GPL 3
@@ -14,6 +14,20 @@
   Text domain:  gogrid
  */
 /* latin */
+/* -------------------------------------------------------------
+TABLE OF CONTENTS
+=================
+- CSS Reset
+- Accessibility
+- Typography
+- General styles
+- Featured Image
+- WP Requires/defaults
+- Gallery
+- Comments
+- No grid support
+- CSS Grid layout for wider screens
+--------------------------------------------------------------*/
 /*--------------------------------------------------------------
 CSS Reset
 --------------------------------------------------------------*/
@@ -282,23 +296,12 @@ summary.mobil-only-button {
   flex-wrap: nowrap;
 }
 
-/*
-.site-title:after {
-	content: " ";
-	width: 100%;
-	background: transparent;
-	height:1px;
-	clear: both;
-	display: block;
-}
-*/
 .header-logo {
 position: relative;  
 
     display: flex;
 z-index: 1;
 }
-
 .site-logo-container {
 	display: flex;
 	justify-content: center;
@@ -332,7 +335,9 @@ z-index: 1;
 	background: linear-gradient( 45deg, rgba( 240,250,240, .9 ) 0%, rgba( 245,235,220, .3 ) 100% );
     text-shadow: 0px 2px 3px #daa;
 }
-/* ---------------------------------- Featured Image ########------- */
+/*--------------------------------------------------------------
+Featured Image
+--------------------------------------------------------------*/ 
 .size-auto, 
 .size-full,
 .size-large,
@@ -358,11 +363,9 @@ z-index: 1;
 	background: #eee;
 } 
 
-
-
-/* ---------------------------------- V - WP Requires ------- */
-
-
+/*--------------------------------------------------------------
+WP Requires
+--------------------------------------------------------------*/
 .alignnone {
 margin: 5px 20px 20px 0;
 display: block;
@@ -415,8 +418,10 @@ p img.aligncenter{
 .wp-caption.aligncenter {
   max-width: calc(100% - 20vw)
 }
-/* =Gallery
--------------------------------------------------------------- */
+
+/*--------------------------------------------------------------
+Gallery
+--------------------------------------------------------------*/
 .gallery {
 	margin: 10px -10px;
 }
@@ -474,8 +479,10 @@ width: 11.11%;
 		margin-bottom: 20px;
 	}
 }
-/* =Comments
--------------------------------------------------------------- */
+
+/*--------------------------------------------------------------
+Comments
+--------------------------------------------------------------*/
 #comments,
 #respond,
 .commentlist,
