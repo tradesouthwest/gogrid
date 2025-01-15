@@ -1,7 +1,8 @@
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: GoGrid\n"
-"POT-Creation-Date: 2025-01-02 20:11-0700\n"
+"POT-Creation-Date: 2025-01-15 10:21-0700\n"
 "PO-Revision-Date: 2025-01-02 20:13-0700\n"
 "Last-Translator: \n"
 "Language-Team: Tradesouthwest\n"
@@ -9,9 +10,314 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.6\n"
-"X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0.1\n"
+"X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;esc_html__;esc_html_e;esc_attr__;esc_attr_e;_n;"
 "_x\n"
 "X-Poedit-SearchPath-0: .\n"
+
+#: comments.php:31
+msgid "&laquo; Older Comments"
+msgstr ""
+
+#: comments.php:33
+msgid "Newer Comments &raquo;"
+msgstr ""
+
+#: comments.php:42
+msgid "Send"
+msgstr ""
+
+#: comments.php:45
+msgid "Write a Reply or Comment"
+msgstr ""
+
+#: comments.php:49
+msgid "You may use these "
+msgstr ""
+
+#: comments.php:50
+msgid "HyperText Markup Language"
+msgstr ""
+
+#: comments.php:51
+msgid "HTML"
+msgstr ""
+
+#: comments.php:52
+msgid "tags and attributes: "
+msgstr ""
+
+#: comments.php:57
+msgid "Respond"
+msgstr ""
+
+#: comments.php:59
+msgid "Comment textarea box"
+msgstr ""
+
+#: comments.php:65
+msgid "You must be "
+msgstr ""
+
+#: comments.php:66
+msgid "logged in "
+msgstr ""
+
+#: comments.php:67
+msgid "to post a comment."
+msgstr ""
+
+#: comments.php:71
+msgid "Your email address will not be published."
+msgstr ""
+
+#: footer.php:21
+msgid "Footer Social Links Menu"
+msgstr ""
+
+#: functions.php:127 header.php:49
+msgid "Primary Menu"
+msgstr ""
+
+#: functions.php:128
+msgid "Social Links Menu"
+msgstr ""
+
+#: functions.php:228
+msgid "Primary Side"
+msgstr ""
+
+#: functions.php:230
+msgid "Appears on the side of all content with default template. (sidebar)"
+msgstr ""
+
+#: functions.php:240
+msgid "Primary Left Content"
+msgstr ""
+
+#: functions.php:242
+msgid "Add widgets here to appear in this spot. (sidebar-2)"
+msgstr ""
+
+#: functions.php:252
+msgid "Primary Right Content"
+msgstr ""
+
+#: functions.php:254
+msgid "Appears at the bottom of the content on posts and pages. (sidebar-3)"
+msgstr ""
+
+#: functions.php:264
+msgid "Secondary Alternative Sidebar"
+msgstr ""
+
+#: functions.php:266
+msgid "Appears on the side of all Secondary content. (sidebar-secondary)"
+msgstr ""
+
+#: functions.php:276
+msgid "Secondary Left Content"
+msgstr ""
+
+#: functions.php:278
+msgid "Apperears for Secondary Template, lower left. (sidebar-4)"
+msgstr ""
+
+#: functions.php:288
+msgid "Secondary Right Content"
+msgstr ""
+
+#: functions.php:290
+msgid "Appears for Secondary Template, lower right. (sidebar-5)"
+msgstr ""
+
+#: functions.php:299
+msgid "Third Main Sidebar"
+msgstr ""
+
+#: functions.php:301
+msgid "Appears on the side of all Third content. (sidebar-third)"
+msgstr ""
+
+#: functions.php:311
+msgid "Third Lower Left"
+msgstr ""
+
+#: functions.php:313
+msgid "Apperears for Third Template, lower left. (sidebar-7)"
+msgstr ""
+
+#: functions.php:323
+msgid "Third Lower Right"
+msgstr ""
+
+#: functions.php:325
+msgid "Appears for Third Template, lower right. (sidebar-8)"
+msgstr ""
+
+#: functions.php:335
+msgid "Fourth Main Sidebar"
+msgstr ""
+
+#: functions.php:337
+msgid "Appears on the side of all Fourth content. (sidebar-fourth)"
+msgstr ""
+
+#: functions.php:347
+msgid "Fourth Lower Left"
+msgstr ""
+
+#: functions.php:349
+msgid "Apperears for Fourth Template. (sidebar-10)"
+msgstr ""
+
+#: functions.php:359
+msgid "Fourth Lower Right"
+msgstr ""
+
+#: functions.php:361
+msgid "Appears for Fourth Template, lower right. (sidebar-11)"
+msgstr ""
+
+#: functions.php:371
+msgid "Footer"
+msgstr ""
+
+#: functions.php:373
+msgid "Appears in the theme footer. (sidebar-footer)"
+msgstr ""
+
+#: functions.php:389
+msgid "By: "
+msgstr ""
+
+#: functions.php:390
+msgid "Categorized as: "
+msgstr ""
+
+#: functions.php:391
+msgid "Keys: "
+msgstr ""
+
+#: functions.php:392
+msgid "Added on: "
+msgstr ""
+
+#: functions.php:447
+msgid "More..."
+msgstr ""
+
+#: header.php:29
+msgid "Skip to content"
+msgstr ""
+
+#: header.php:57
+msgid "open menu"
+msgstr ""
+
+#: inc/class-wp-options-page.php:251
+msgid "Settings saved."
+msgstr ""
+
+#: inc/class-wp-options-page.php:252
+msgid "Save Changes"
+msgstr ""
+
+#: inc/class-wp-options-page.php:544
+msgid "Sorry, you are not allowed to access this page."
+msgstr ""
+
+#: inc/gogrid-customizer.php:21
+msgid "Gogrid Theme Controls"
+msgstr ""
+
+#: inc/gogrid-customizer.php:51
+msgid "Set Site Container Width"
+msgstr ""
+
+#: inc/gogrid-customizer.php:52
+msgid "This sets how wide the inner content will be, in pixels."
+msgstr ""
+
+#: inc/gogrid-customizer.php:65
+msgid "Set POSTS ONLY Excerpt Length"
+msgstr ""
+
+#: index.php:73
+msgid "Add widgets here or set style to `.nosb2-blank{visibility: hidden}`"
+msgstr ""
+
+#: index.php:83
+msgid "Add widgets here or set style to `.nosb3-blank{visibility: hidden}`"
+msgstr ""
+
+#: theme-options.php:30
+msgid "Instructions Etc"
+msgstr ""
+
+#: theme-options.php:31 theme-options.php:49
+msgid "Theme Overview"
+msgstr ""
+
+#: theme-options.php:58
+msgid "Gogrid Theme Instructions and General Information"
+msgstr ""
+
+#: theme-options.php:66
+msgid "Gogrid theme page"
+msgstr ""
+
+#: theme-options.php:68
+msgid "General Overview of Theme Settings"
+msgstr ""
+
+#: theme-options.php:72
+msgid ""
+"The areas for widgets all have alternative fallbacks that are created so "
+"there should be content in every widget box."
+msgstr ""
+
+#: theme-options.php:73
+msgid ""
+"If a widget does not exists (you have not added any widgets yet) then you "
+"will see a message telling you what box is empty."
+msgstr ""
+
+#: theme-options.php:74
+msgid ""
+"All templates will follow the previous template's default. If Secondary "
+"Template has no widgets then it will use the widgets from the Primary "
+"Template."
+msgstr ""
+
+#: theme-options.php:75
+msgid ""
+"As follows, the Quad Template will use the widgets from the Secondary but "
+"display secondary widgets AFTER Quad Widgets, if installed."
+msgstr ""
+
+#: tmplate-quad.php:70
+msgid "Add widgets here or set style to `.nosb10-blank{visibility: hidden}`"
+msgstr ""
+
+#: tmplate-quad.php:80
+msgid "Add widgets here or set style to `.nosb7-blank{visibility: hidden}`"
+msgstr ""
+
+#: tmplate-quad.php:92
+msgid "Add widgets here or set style to `.nosb11-blank{visibility: hidden}`"
+msgstr ""
+
+#: tmplate-quad.php:102
+msgid "Add widgets here or set style to `.nosb8-blank{visibility: hidden}`"
+msgstr ""
+
+#: tmplate-secondary.php:75
+msgid "Add widgets here or set style to `.nosb4-blank{visibility: hidden}`"
+msgstr ""
+
+#: tmplate-secondary.php:86
+msgid "Add widgets here or set style to `.nosb5-blank{visibility: hidden}`"
+msgstr ""
