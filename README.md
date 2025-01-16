@@ -21,10 +21,14 @@ Theme Options Include:
 
 Theme built with CSS3 grid templating specifications for full mobile and small device support.
 
+![showing usage of widgets in pages](/css/instruct.png)
+
 # Support
 Use https://github.com/tradesouthwest/gogrid/issues to post your issues with this theme.
 
 # Change Log
+- 1.0.3
+Fix description
 - 1.0.2
 initial release
 
